@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 
 const PhotoGridItem = ({ id, src, alt, tags }) => {
-	const addHigherDpi = (string, dpi) => string.replace(".", `${dpi}.`);
+	const addHigherDpi = (string, dpi, extension) => string.replace(`.jpg`, `${dpi}.${extension}`);
 
 	return (
 		<article>
@@ -12,15 +12,15 @@ const PhotoGridItem = ({ id, src, alt, tags }) => {
 						type="image/avif"
 						srcset={`
             ${src} 1x, 
-            ${addHigherDpi(src, "@2x")} 2x, 
-            ${addHigherDpi(src, "@3x")} 3x`}
+            ${addHigherDpi(src, "@2x", "avif")} 2x, 
+            ${addHigherDpi(src, "@3x", "avif")} 3x`}
 					/>
 					<source
 						type="image/jpg"
 						srcset={`
             ${src} 1x, 
-            ${addHigherDpi(src, "@2x")} 2x, 
-            ${addHigherDpi(src, "@3x")} 3x`}
+            ${addHigherDpi(src, "@2x", "jpg")} 2x, 
+            ${addHigherDpi(src, "@3x", "jpg")} 3x`}
 					/>
 					<Image alt={alt} src={src} />
 				</picture>
