@@ -24,10 +24,16 @@ const Anchor = styled.a`
 
 const Image = styled.img`
 	display: block;
+	object-fit: cover;
 	width: 100%;
 	height: 300px;
 	border-radius: 2px;
 	margin-bottom: 8px;
+
+	@supports (aspect-ratio: 1 / 1) {
+		height: revert;
+		aspect-ratio: 1 / 1;
+	}
 `;
 
 const Tags = styled.ul`
